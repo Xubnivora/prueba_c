@@ -1,0 +1,12 @@
+C:\Users\rogue\source\repos\PruebaC\PruebaC\bin\Debug\PruebaC.exe.config
+C:\Users\rogue\source\repos\PruebaC\PruebaC\bin\Debug\PruebaC.exe
+C:\Users\rogue\source\repos\PruebaC\PruebaC\bin\Debug\PruebaC.pdb
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.csproj.AssemblyReference.cache
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.csproj.SuggestedBindingRedirects.cache
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.Properties.Resources.resources
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.csproj.GenerateResource.cache
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.csproj.CoreCompileInputs.cache
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.exe
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.pdb
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.FormArticulos.resources
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.FormMenuPrincipal.resources
