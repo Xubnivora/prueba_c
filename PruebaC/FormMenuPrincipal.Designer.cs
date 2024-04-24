@@ -71,12 +71,14 @@
             this.toolmenuEncKardex.Name = "toolmenuEncKardex";
             this.toolmenuEncKardex.Size = new System.Drawing.Size(277, 22);
             this.toolmenuEncKardex.Text = "Operaciones de encabezado de Kardex";
+            this.toolmenuEncKardex.Click += new System.EventHandler(this.toolmenuEncKardex_Click);
             // 
             // toolmenuDetKardex
             // 
             this.toolmenuDetKardex.Name = "toolmenuDetKardex";
             this.toolmenuDetKardex.Size = new System.Drawing.Size(277, 22);
             this.toolmenuDetKardex.Text = "Operaciones de Detalle de Kardex";
+            this.toolmenuDetKardex.Click += new System.EventHandler(this.toolmenuDetKardex_Click);
             // 
             // pictureBox1
             // 

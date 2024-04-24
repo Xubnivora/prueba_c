@@ -10,3 +10,5 @@ C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.exe
 C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.pdb
 C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.FormArticulos.resources
 C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.FormMenuPrincipal.resources
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.FormEncCardex.resources
+C:\Users\rogue\source\repos\PruebaC\PruebaC\obj\Debug\PruebaC.Frmdetalle.resources

@@ -30,8 +30,16 @@ namespace PruebaC
 
         }
 
+        private void toolmenuEncKardex_Click(object sender, EventArgs e)
+        {
+            FormEncCardex Frmkradex = new FormEncCardex();
+            Frmkradex.Show();
+        }
 
-
-
+        private void toolmenuDetKardex_Click(object sender, EventArgs e)
+        {
+            Frmdetalle Frmdetalle= new Frmdetalle();
+            Frmdetalle.Show();
+        }
     }
 }

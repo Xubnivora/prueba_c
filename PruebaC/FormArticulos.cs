@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,9 @@ namespace PruebaC
         {
             InitializeComponent();
         }
+
+
+        public Int32 maximus = 0;
 
         private void Txtprecioproduct_TextChanged(object sender, EventArgs e)
         {
@@ -102,17 +106,18 @@ namespace PruebaC
                     {
                         using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                         {
-                            SqlCommand sqlCmd = new SqlCommand($"SELECT [id_producto],[id_tipo_producto],[nombre_producto],[precio_unitario_producto],[SKU],[codigo_barras],[peso_kg],[detalles_producto]\r\n  FROM [PRUEBA_C].[dbo].[PRODUCTO] WHERE [id_tipo_producto] = {this.cmbTipProduct.SelectedValue.ToString()} ORDER BY [nombre_producto] ASC;", sqlConnection);
+                            SqlCommand sqlCmd_x = new SqlCommand($"SELECT [id_producto],[id_tipo_producto],[nombre_producto],[precio_unitario_producto],[SKU],[codigo_barras],[peso_kg],[detalles_producto]\r\n  FROM [PRUEBA_C].[dbo].[PRODUCTO] WHERE [id_tipo_producto] = {this.cmbTipProduct.SelectedValue.ToString()} ORDER BY [id_producto] ASC;", sqlConnection);
 
                             sqlConnection.Open();
 
-                            SqlDataAdapter sqlReader = new SqlDataAdapter(sqlCmd);
+                            SqlDataAdapter sqlReader = new SqlDataAdapter(sqlCmd_x);
 
                             var datamart = new DataTable();
 
                             sqlReader.Fill(datamart);
 
                             DTGRProducts.DataSource = datamart;
+
 
                         }
                     }
@@ -121,6 +126,37 @@ namespace PruebaC
                         Console.WriteLine(ex.ToString());
                         connection.Close();
                     }
+
+                    try
+                    {
+                        using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                        {
+                            SqlCommand sqlCmd = new SqlCommand($"SELECT TOP 1 [id_producto] FROM [PRUEBA_C].[dbo].[PRODUCTO] ORDER BY [id_producto] DESC;", sqlConnection);
+
+                            sqlConnection.Open();
+
+
+                            SqlDataReader sqlReader_X = sqlCmd.ExecuteReader();
+
+                            while (sqlReader_X.Read())
+                            {
+
+                                maximus = sqlReader_X.GetInt32(0);
+
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        connection.Close();
+                    }
+
+
+
+
                     connection.Close();
                 }
             }
@@ -129,6 +165,82 @@ namespace PruebaC
 
         }
 
+        private void Btnagregar_Click(object sender, EventArgs e)
+        {
+
+
+           if (Txtproductname.Text.Length > 0 && Txtprecioproduct.Text.Length > 0 && Txtsku.Text.Length > 0 && Txtcodebar.Text.Length > 0 && TxtPeso.Text.Length > 0) {
+
+                String connectionString = "Server=LAPTOP-DIJC1E1E\\SQLEXPRESS;Database=PRUEBAREST;Integrated Security=SSPI;Trusted_Connection=True;";
+
+                try
+                {
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[PRODUCTO]\r\n           ([id_producto],[id_tipo_producto],[nombre_producto] ,[precio_unitario_producto],[SKU],[codigo_barras],[peso_kg],[detalles_producto])\r\n     VALUES (@id_producto,@id_tipo_producto,@nombre_producto,@precio_unitario_producto,@SKU,@codigo_barras,@peso_kg,@detalles_producto)", con);
+                        maximus = maximus + 1;
+                    cmd.Parameters.AddWithValue("@id_producto", maximus.ToString()) ;
+                    cmd.Parameters.AddWithValue("@id_tipo_producto", this.cmbTipProduct.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@nombre_producto", Txtproductname.Text);
+                    cmd.Parameters.AddWithValue("@precio_unitario_producto", Txtprecioproduct.Text);
+                    cmd.Parameters.AddWithValue("@SKU", Txtsku.Text);
+                    cmd.Parameters.AddWithValue("@codigo_barras", Txtcodebar.Text);
+                    cmd.Parameters.AddWithValue("@peso_kg", TxtPeso.Text);
+                    cmd.Parameters.AddWithValue("@detalles_producto", richTextBox1.Text);
+
+              
+                        cmd.ExecuteNonQuery();
+
+                        con.Close();
+                    }
+
+                    try
+                    {
+                        using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                        {
+                            SqlCommand sqlCmd_x = new SqlCommand($"SELECT [id_producto],[id_tipo_producto],[nombre_producto],[precio_unitario_producto],[SKU],[codigo_barras],[peso_kg],[detalles_producto]\r\n  FROM [PRUEBA_C].[dbo].[PRODUCTO] WHERE [id_tipo_producto] = {this.cmbTipProduct.SelectedValue.ToString()} ORDER BY [id_producto] ASC;", sqlConnection);
+
+                            sqlConnection.Open();
+
+                            SqlDataAdapter sqlReader = new SqlDataAdapter(sqlCmd_x);
+
+                            var datamart = new DataTable();
+
+                            sqlReader.Fill(datamart);
+
+                            DTGRProducts.DataSource = datamart;
+                            sqlConnection.Close();
+                        }
+
+                     
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                
+                }
+
+          
+
+            }
+
+
+
+
+        }
 
 
 

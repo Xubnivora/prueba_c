@@ -181,6 +181,7 @@
             this.Btnagregar.TabIndex = 15;
             this.Btnagregar.Text = "Agreagar";
             this.Btnagregar.UseVisualStyleBackColor = true;
+            this.Btnagregar.Click += new System.EventHandler(this.Btnagregar_Click);
             // 
             // FormArticulos
             // 

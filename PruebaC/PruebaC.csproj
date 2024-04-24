@@ -52,11 +52,23 @@
     <Compile Include="FormArticulos.Designer.cs">
       <DependentUpon>FormArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEncCardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEncCardex.Designer.cs">
+      <DependentUpon>FormEncCardex.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMenuPrincipal.Designer.cs">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmdetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmdetalle.Designer.cs">
+      <DependentUpon>Frmdetalle.cs</DependentUpon>
     </Compile>
     <Compile Include="grdArticulos.cs" />
     <Compile Include="Productype.cs" />
@@ -65,8 +77,14 @@
     <EmbeddedResource Include="FormArticulos.resx">
       <DependentUpon>FormArticulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEncCardex.resx">
+      <DependentUpon>FormEncCardex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmdetalle.resx">
+      <DependentUpon>Frmdetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
