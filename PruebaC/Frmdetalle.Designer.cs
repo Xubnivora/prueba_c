@@ -102,6 +102,7 @@
             this.cmbOperacion.Name = "cmbOperacion";
             this.cmbOperacion.Size = new System.Drawing.Size(121, 21);
             this.cmbOperacion.TabIndex = 4;
+            this.cmbOperacion.SelectedIndexChanged += new System.EventHandler(this.cmbOperacion_SelectedIndexChanged);
             this.cmbOperacion.SelectedValueChanged += new System.EventHandler(this.cmbOperacion_SelectedValueChanged);
             // 
             // label3
@@ -144,6 +145,8 @@
             this.txtEntradaUnit.Name = "txtEntradaUnit";
             this.txtEntradaUnit.Size = new System.Drawing.Size(84, 20);
             this.txtEntradaUnit.TabIndex = 9;
+            this.txtEntradaUnit.TextChanged += new System.EventHandler(this.txtEntradaUnit_TextChanged);
+            this.txtEntradaUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEntradaUnit_KeyPress);
             // 
             // txtEntradavalorUnit
             // 
@@ -151,11 +154,14 @@
             this.txtEntradavalorUnit.Name = "txtEntradavalorUnit";
             this.txtEntradavalorUnit.Size = new System.Drawing.Size(100, 20);
             this.txtEntradavalorUnit.TabIndex = 10;
+            this.txtEntradavalorUnit.TextChanged += new System.EventHandler(this.txtEntradavalorUnit_TextChanged);
+            this.txtEntradavalorUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEntradavalorUnit_KeyPress);
             // 
             // txtEntradavalorTot
             // 
             this.txtEntradavalorTot.Location = new System.Drawing.Point(403, 116);
             this.txtEntradavalorTot.Name = "txtEntradavalorTot";
+            this.txtEntradavalorTot.ReadOnly = true;
             this.txtEntradavalorTot.Size = new System.Drawing.Size(100, 20);
             this.txtEntradavalorTot.TabIndex = 11;
             // 
@@ -165,6 +171,8 @@
             this.txtSalidaUnit.Name = "txtSalidaUnit";
             this.txtSalidaUnit.Size = new System.Drawing.Size(84, 20);
             this.txtSalidaUnit.TabIndex = 12;
+            this.txtSalidaUnit.TextChanged += new System.EventHandler(this.txtSalidaUnit_TextChanged);
+            this.txtSalidaUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalidaUnit_KeyPress);
             // 
             // txtSalidaValorUnit
             // 
@@ -172,11 +180,14 @@
             this.txtSalidaValorUnit.Name = "txtSalidaValorUnit";
             this.txtSalidaValorUnit.Size = new System.Drawing.Size(99, 20);
             this.txtSalidaValorUnit.TabIndex = 13;
+            this.txtSalidaValorUnit.TextChanged += new System.EventHandler(this.txtSalidaValorUnit_TextChanged);
+            this.txtSalidaValorUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalidaValorUnit_KeyPress);
             // 
             // txtSalidaValorTotal
             // 
             this.txtSalidaValorTotal.Location = new System.Drawing.Point(403, 173);
             this.txtSalidaValorTotal.Name = "txtSalidaValorTotal";
+            this.txtSalidaValorTotal.ReadOnly = true;
             this.txtSalidaValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtSalidaValorTotal.TabIndex = 14;
             // 

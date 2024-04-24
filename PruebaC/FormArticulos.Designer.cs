@@ -71,6 +71,7 @@
             this.Txtprecioproduct.Size = new System.Drawing.Size(100, 20);
             this.Txtprecioproduct.TabIndex = 2;
             this.Txtprecioproduct.TextChanged += new System.EventHandler(this.Txtprecioproduct_TextChanged);
+            this.Txtprecioproduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtprecioproduct_KeyPress);
             // 
             // Txtsku
             // 
@@ -147,6 +148,7 @@
             this.TxtPeso.Size = new System.Drawing.Size(100, 20);
             this.TxtPeso.TabIndex = 11;
             this.TxtPeso.TextChanged += new System.EventHandler(this.TxtPeso_TextChanged);
+            this.TxtPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPeso_KeyPress);
             // 
             // Txtdetalles
             // 

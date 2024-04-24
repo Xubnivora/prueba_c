@@ -26,20 +26,12 @@ namespace PruebaC
 
         private void Txtprecioproduct_TextChanged(object sender, EventArgs e)
         {
-          if (System.Text.RegularExpressions.Regex.IsMatch(Txtprecioproduct.Text, "[^0-9].[^0-9]"))
-            {
-  
-               Txtprecioproduct.Text = Txtprecioproduct.Text.Remove(Txtprecioproduct.Text.Length - 1);
-            }
+
         }
 
         private void TxtPeso_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(TxtPeso.Text, "[^0-9].[^0-9]"))
-            {
 
-                TxtPeso.Text = TxtPeso.Text.Remove(TxtPeso.Text.Length - 1);
-            }
         }
 
         private void FormArticulos_Load(object sender, EventArgs e)
@@ -242,8 +234,37 @@ namespace PruebaC
 
         }
 
+        private void TxtPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+  (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            {
 
+                e.Handled = true;
+            }
+        }
 
+        private void Txtprecioproduct_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+              (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            {
+              
+                e.Handled = true;
+            }
+
+        }
     }
 }
