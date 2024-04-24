@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace PruebaC
 {
     public partial class Frmdetalle : Form
@@ -359,7 +361,7 @@ namespace PruebaC
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            Random rnd = new Random();
             if (this.cmbOperacion.SelectedValue.ToString().Equals("1") == true)
             {
 
@@ -367,10 +369,10 @@ namespace PruebaC
                 {
 
                     String connectionString = "Server=LAPTOP-DIJC1E1E\\SQLEXPRESS;Database=PRUEBAREST;Integrated Security=SSPI;Trusted_Connection=True;";
-
+                    
                     try
                     {
-
+                       
                         using (SqlConnection con = new SqlConnection(connectionString))
                         {
                             con.Open();
@@ -387,7 +389,7 @@ namespace PruebaC
 
                             suma_total = float.Parse(txtEntradavalorTot.Text) + float.Parse(txtSaldostotal.Text);
 
-                            SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[entrada_cantidad],[entrada_valor_unitario],[entrada_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (1,GETDATE(),@id_kardex,@id_tipo_operacion ,@entrada_cantidad ,@entrada_valor_unitario,@entrada_valor_total,@entrada_cantidad_total,@entrada_valor_unitario_total,@entrada_valor_total_total)", con);
+                            SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[entrada_cantidad],[entrada_valor_unitario],[entrada_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (" + rnd.Next(100).ToString() + ",GETDATE(),@id_kardex,@id_tipo_operacion ,@entrada_cantidad ,@entrada_valor_unitario,@entrada_valor_total,@entrada_cantidad_total,@entrada_valor_unitario_total,@entrada_valor_total_total)", con);
 
                             cmd.Parameters.AddWithValue("@id_kardex", this.cmbKardex.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@id_tipo_operacion", this.cmbAccion.SelectedValue.ToString());
@@ -442,7 +444,7 @@ namespace PruebaC
                             con.Open();
 
 
-                            SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[entrada_cantidad],[entrada_valor_unitario],[entrada_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (1,GETDATE(),@id_kardex,@id_tipo_operacion ,@entrada_cantidad ,@entrada_valor_unitario,@entrada_valor_total,@entrada_cantidad_total,@entrada_valor_unitario_total,@entrada_valor_total_total)", con);
+                            SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[entrada_cantidad],[entrada_valor_unitario],[entrada_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (" + rnd.Next(100).ToString() + ",GETDATE(),@id_kardex,@id_tipo_operacion ,@entrada_cantidad ,@entrada_valor_unitario,@entrada_valor_total,@entrada_cantidad_total,@entrada_valor_unitario_total,@entrada_valor_total_total)", con);
 
                             cmd.Parameters.AddWithValue("@id_kardex", this.cmbKardex.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@id_tipo_operacion", this.cmbAccion.SelectedValue.ToString());
@@ -499,7 +501,7 @@ namespace PruebaC
                                 con.Open();
 
 
-                                SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[salida_cantidad],[salida_valor_unitario],[salida_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (1,GETDATE(),@id_kardex,@id_tipo_operacion ,@salida_cantidad ,@salida_valor_unitario,@salida_valor_total,@salida_cantidad_total,@salida_valor_unitario_total,@salida_valor_total_total)", con);
+                                SqlCommand cmd = new SqlCommand("INSERT INTO [PRUEBA_C].[dbo].[KARDEX_DETALLE]([id_detalle_kardex],[fecha],[id_kardex],[id_tipo_operacion],[salida_cantidad],[salida_valor_unitario],[salida_valor_total],[saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total])\r\nVALUES (" + rnd.Next(100).ToString() + ",GETDATE(),@id_kardex,@id_tipo_operacion ,@salida_cantidad ,@salida_valor_unitario,@salida_valor_total,@salida_cantidad_total,@salida_valor_unitario_total,@salida_valor_total_total)", con);
 
                                 cmd.Parameters.AddWithValue("@id_kardex", this.cmbKardex.SelectedValue.ToString());
                                 cmd.Parameters.AddWithValue("@id_tipo_operacion", this.cmbAccion.SelectedValue.ToString());
@@ -680,6 +682,74 @@ namespace PruebaC
 
 
             }
+            String connectionString = "Server=LAPTOP-DIJC1E1E\\SQLEXPRESS;Database=PRUEBAREST;Integrated Security=SSPI;Trusted_Connection=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                var operation = new List<Productype>();
+
+                Int16 numero = 0;
+
+                Int32 cantidad = 0;
+                Decimal valor_unitario = 0;
+                Decimal total = 0;
+
+
+
+                if (this.cmbKardex.SelectedValue.ToString().Equals("PruebaC.Productype") == false)
+                {
+    
+                    connection.Open();
+
+                    try
+                    {
+                        using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                        {
+                            SqlCommand sqlCmd_x = new SqlCommand($"SELECT TOP 1 [saldos_cantidad],[saldos_valor_unitario],[saldos_valor_total] FROM [PRUEBA_C].[dbo].[KARDEX_DETALLE] WHERE [id_kardex] = {this.cmbKardex.SelectedValue.ToString()} ORDER BY  [fecha] DESC;", sqlConnection);
+
+                            sqlConnection.Open();
+
+
+                            SqlDataReader sqlReader = sqlCmd_x.ExecuteReader();
+
+
+
+                            while (sqlReader.Read())
+                            {
+                                numero++;
+                                cantidad = sqlReader.GetInt32(0);
+                                valor_unitario = Decimal.Parse(sqlReader.GetSqlDecimal(1).ToString());
+                                total = Decimal.Parse(sqlReader.GetSqlDecimal(2).ToString());
+
+                            }
+
+                            if (numero == 0)
+                            {
+
+                                cantidad = 0;
+                                valor_unitario = 0;
+                                total = 0;
+
+                            }
+
+                            this.txtSaldosUnit.Text = cantidad.ToString();
+                            this.txtSaldoscosto.Text = valor_unitario.ToString();
+                            this.txtSaldostotal.Text = total.ToString();
+
+
+                            sqlReader.Close();
+
+
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        connection.Close();
+                    }
+                }
+            }
 
 
         }
@@ -701,6 +771,65 @@ namespace PruebaC
                 
                 txtSalidaValorTotal.Text = (float.Parse(txtSalidaValorUnit.Text) * float.Parse(this.txtSalidaUnit.Text)).ToString();
 
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            String connectionString = "Server=LAPTOP-DIJC1E1E\\SQLEXPRESS;Database=PRUEBAREST;Integrated Security=SSPI;Trusted_Connection=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                var operation = new List<Productype>();
+
+                Int16 numero = 0;
+
+                Int32 cantidad = 0;
+                Decimal valor_unitario = 0;
+                Decimal total = 0;
+
+
+
+                if (this.cmbKardex.SelectedValue.ToString().Equals("PruebaC.Productype") == false)
+                {
+
+                    connection.Open();
+           
+
+
+
+                    try
+                    {
+                        using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                        {
+                            SqlCommand sqlCmd_x = new SqlCommand($"SELECT [fecha] ,[id_kardex] ,[id_tipo_operacion],[id_detalle_kardex],[entrada_cantidad],[entrada_valor_unitario]\r\n      ,[entrada_valor_total],[salida_cantidad],[salida_valor_unitario],[salida_valor_total],[saldos_cantidad]\r\n      ,[saldos_valor_unitario] ,[saldos_valor_total] FROM [PRUEBA_C].[dbo].[KARDEX_DETALLE]\r\n\t  WHERE  [id_kardex] = "+ this.cmbKardex.SelectedValue.ToString() + "  ORDER BY [fecha] ASC;", sqlConnection);
+
+                            sqlConnection.Open();
+
+
+              
+
+                            SqlDataAdapter sqlReader = new SqlDataAdapter(sqlCmd_x);
+
+                            var datamart = new DataTable();
+
+                            sqlReader.Fill(datamart);
+
+
+
+                            connection.Close();
+                            sqlConnection.Close();
+
+
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        connection.Close();
+                    }
+                }
             }
         }
     }

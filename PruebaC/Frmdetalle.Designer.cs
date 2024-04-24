@@ -58,6 +58,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbKardex
@@ -315,11 +316,22 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(616, 206);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(129, 36);
+            this.btnExcel.TabIndex = 29;
+            this.btnExcel.Text = "Exportar Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // Frmdetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -389,5 +401,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnExcel;
     }
 }
